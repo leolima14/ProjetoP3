@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Ouvintes</title>
+    </head>
+    <body>
+        <h1>Lista de Ouvintes</h1>
+        {{range .Ouvintes}}
+        <!--      Since we are ranging over . (TicketList), the . now refers to a single Ticket within the TicketList  -->
+        <div>
+            <h3>{{ .Email }} | {{ .Data_nascimento }} | {{ .Nome }} | {{ .Sobrenome }} | {{ .Telefone }} |       Seguindo: {{range $element := .Seguindo}}  {{$element}} {{end}}
+            </h3>
+        </div>
+        {{end}}
+        <h1>Follow</h1>
+        <div>
+            <form action="/home/ouvintes" method="POST">
+                Ouvinte: <select name="ouvintes" id="mus2">
+                    {{range .Ouvintes}}
+                    <option value="{{.Email}}">{{.Email}}></option>
+                    {{end}}
+                </select>
+                Artista: <select name="artistas" id="art">
+                    {{range .Artistas}}
+                    <option value="{{.Email}}">{{.Email}}</option>
+                    {{end}}
+                </select>
+                <input type="submit" name="adiciona" value="Follow">
+            </form>
+        </div>
+        <h1>Unfollow</h1>
+        <div>
+            <form action="/home/ouvintes" method="POST">
+                Ouvinte: <select name="ouvintes" id="mus2">
+                    {{range .Ouvintes}}
+                    <option value="{{.Email}}">{{.Email}}></option>
+                    {{end}}
+                </select>
+                Artista: <select name="artistas" id="art">
+                    {{range .Artistas}}
+                    <option value="{{.Email}}">{{.Email}}</option>
+                    {{end}}
+                </select>
+                <input type="submit" name="adiciona" value="Unfollow">
+            </form>
+        </div>
+        <h2><a href="/home"class="max-w-6xl mx-auto sm:px-6 lg:px-8">Home</a></h2>
+    </body>
+</html>

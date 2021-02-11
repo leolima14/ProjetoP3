@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Musicas</title>
+    </head>
+    <body>
+        <h1>Lista de Musicas</h1>
+        {{range .Musicas}}
+        <!--      Since we are ranging over . (TicketList), the . now refers to a single Ticket within the TicketList  -->
+        <div>
+            <h3> <a href="/home/musicas?id={{ .Id }} "class="max-w-6xl mx-auto sm:px-6 lg:px-8">{{ .Id }} </a>: {{.Nome}}  {{.Duracao}} </h3>
+        </div>
+        {{end}}
+        <div>
+            <h1>Like</h1>
+            <form action="/home/musicas" method="POST">
+                <select name="musicas" id="mus">
+                    {{range .Musicas}}
+                    <option value="{{.Nome}}" >{{.Nome}}></option>
+                    {{end}}
+                </select>
+                <select name="Ouvintes" id="ouv">
+                    {{range .Ouvintes}}
+                    <option value="{{.Email}}">{{.Email}}</option>
+                    {{end}}
+                </select>
+                <input type="submit" name="adiciona" value="Like">
+            </form>
+        </div>
+        <div>
+            <h1>Unike</h1>
+            <form action="/home/musicas" method="POST">
+                <select name="musicas" id="mus">
+                    {{range .Musicas}}
+                    <option value="{{.Nome}}" >{{.Nome}}></option>
+                    {{end}}
+                </select>
+                <select name="Ouvintes" id="ouv">
+                    {{range .Ouvintes}}
+                    <option value="{{.Email}}">{{.Email}}</option>
+                    {{end}}
+                </select>
+                <input type="submit" name="adiciona" value="Unlike">
+            </form>
+        </div>
+        <h2><a href="/home"class="max-w-6xl mx-auto sm:px-6 lg:px-8">Home</a></h2>
+    </body>
+</html>

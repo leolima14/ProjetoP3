@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Artistas</title>
+    </head>
+    <body>
+        <h1>Lista de Artistas</h1>
+        {{range .}}
+        <!--      Since we are ranging over . (TicketList), the . now refers to a single Ticket within the TicketList  -->
+        <div>
+            <h3>{{ .Email }} | {{ .Data_nascimento }} | {{ .Nome_artistico }} | {{ .Biografia }} | {{ .Ano_formacao }} | Seguidores: {{range $element := .Seguidores}}  {{$element}} {{end}}
+            </h3>
+            <h2>
+                
+            </h2>
+        </div>
+        {{end}}
+        <h2><a href="/home"class="max-w-6xl mx-auto sm:px-6 lg:px-8">Home</a></h2>
+    </body>
+</html>

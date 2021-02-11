@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <title>Playlists</title>
+    </head>
+    <h1>Lista de Playlists</h1>
+    {{range .Playlists}}
+    <h3>Criador: {{.Email}} Nome: {{.Nome}} Numero de Ouvintes: {{.Count}}  Id Musicas: {{range $element := .Id_musica}} {{$element}} {{end}}</h3>
+    {{end}}
+    <div>
+        <h2>Criar Playlist</h2>
+        <form action="/home/playlist" method="POST">
+            Usuario: 
+            <select name="user" id="user">
+                {{range .Artistas}}
+                <option value="{{.Email}}" >{{.Email}}></option>
+                {{end}}
+            </select>
+            Nome: 
+            <input type="text" name="nomePlaylist" id="nome" required>
+            Data Criação: 
+            <input type="datetime" name="data_nascimento" id="data_nascimento" placeholder="YYYYMMDD">
+            </select>
+            <input type="submit" name="adiciona" value="Criar">
+        </form>
+    </div>
+    <div>
+        <h2>Adicionar Musica à Playlist</h2>
+        <form action="/home/playlist" method="POST">
+            Musica: 
+            <select name="musicas2" id="mus2">
+                {{range .Musicas}}
+                <option value="{{.Nome}}" >{{.Nome}}></option>
+                {{end}}
+            </select>
+            {{range .Playlists}}
+            Criador: 
+            <select name="Criador1" id="cria1">
+                <option value="{{.Email}}">{{.Email}}</option>
+            </select>
+            Nome: 
+            <select name="Nome1" id="nom1">
+                <option value="{{.Nome}}">{{.Nome}}</option>
+            </select>
+            {{end}}
+            <input type="submit" name="adiciona" value="Adicionar">
+        </form>
+    </div>
+    <div>
+        <h2>Remover Musica da Playlist</h2>
+        <form action="/home/playlist" method="POST">
+            {{range .Playlists}}
+            Musica: 
+            <select name="musicas3" id="mus3">
+                {{range $element := .Id_musica}}
+                <option value="{{$element}}" >{{$element}}></option>
+                {{end}}
+            </select>
+            Criador: 
+            <select name="Criador2" id="cria2">
+                <option value="{{.Email}}">{{.Email}}</option>
+            </select>
+            Nome: 
+            <select name="Nome2" id="nom2">
+                <option value="{{.Nome}}">{{.Nome}}</option>
+            </select>
+            {{end}}
+            <input type="submit" name="adiciona" value="Remover">
+        </form>
+    </div>
+    <div>
+        <h2>Follow Playlist</h2>
+        <form action="/home/playlist" method="POST">
+            
+            Ouvinte: 
+            <select name="ouvintes3" id="ouv3">
+                {{range .Ouvintes}}
+                <option value="{{.Email}}" >{{.Email}}></option>
+                {{end}}
+            </select>
+            {{range .Playlists}}
+            Criador: 
+            <select name="Criador3" id="ouv3">
+                <option value="{{.Email}}">{{.Email}}</option>
+            </select>
+            Nome: 
+            <select name="Nome" id="ouv">
+                <option value="{{.Nome}}">{{.Nome}}</option>
+            </select>
+            {{end}}
+            <input type="submit" name="adiciona" value="Follow">
+        </form>
+    </div>
+    <div>
+        <h2>Unfollow Playlist</h2>
+        <form action="/home/playlist" method="POST">
+            {{range .Seguidores}}
+            Ouvinte: 
+            <select name="ouvintes3" id="ouv3">
+                <option value="{{.EmailOuvinte}}" >{{.EmailOuvinte}}></option>
+            </select>
+            Criador: 
+            <select name="Criador3" id="ouv3">
+                <option value="{{.EmailCriador}}">{{.EmailCriador}}</option>
+            </select>
+            Nome: 
+            <select name="Nome" id="ouv">
+                <option value="{{.Nome}}">{{.Nome}}</option>
+            </select>
+            {{end}}
+            <input type="submit" name="adiciona" value="Unfollow">
+        </form>
+    </div>
+    <h2><a href="/home"class="max-w-6xl mx-auto sm:px-6 lg:px-8">Home</a></h2>
+</html>

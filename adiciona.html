@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Musica</title>
+    </head>
+<div class="criar musica">
+    <h1>Adicione uma musica</h1>
+    <form action="/home/adiciona" method="POST">
+        <label for="Nome">Nome da musica</label>
+        <input type="text" id="Nome" name="Nome" required>
+        <label for="duracao">Duracao</label>
+        <input type="number" name="Duracao" id="Duracao">
+        <input type="submit" name="adiciona" value="Adicionar musica">
+        
+    </form>
+</div>
+<div>
+    <h1>Alterar nome musica</h1>
+    <form action="/home/adiciona" method="POST">
+        <select name="musicas" id="mus">
+            {{range .Musicas}}
+            <option value="{{.Nome}}" >{{.Nome}}></option>
+            {{end}}
+        </select>
+        <input type="text" name="nome" id="novonome" class="form-control" placeholder="Novo nome">
+        <input type="submit" name="adiciona" value="Alterar">
+    </form>
+</div>
+<div>
+    <h1>Vincular Artista com Musica</h1>
+    <form action="/home/adiciona" method="POST">
+        <select name="musicas2" id="mus2">
+            {{range .Musicas}}
+            <option value="{{.Nome}}" >{{.Nome}}></option>
+            {{end}}
+        </select>
+        <select name="artistas" id="art">
+            {{range .Artistas}}
+            <option value="{{.Nome_artistico}}">{{.Nome_artistico}}</option>
+            {{end}}
+        </select>
+        <input type="submit" name="adiciona" value="Salvar">
+    </form>
+</div>
+<h2><a href="/home"class="max-w-6xl mx-auto sm:px-6 lg:px-8">Home</a></h2>
+</html>

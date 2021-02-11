@@ -1,0 +1,11 @@
+<html>
+    <head>
+        <title>Musica</title>
+    </head>
+    <body>
+       <h3>
+        Id: {{ .Id }} -- Nome: {{.Nome}} -- Duracao: {{.Duracao}} -- Curtidas: {{range $element := .Curtidas}}  {{$element}} {{end}}
+       </h3> 
+       <h2><a href="/home/musicas"class="max-w-6xl mx-auto sm:px-6 lg:px-8">Voltar</a></h2>
+    </body>
+</html>

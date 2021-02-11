@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Musica</title>
+    </head>
+<div class="Criar Usuario">
+    <h1>Criar Usuario</h1>
+    <form action="/signup" method="POST">
+    <br>
+        <p>
+            <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus>
+        </p>
+        <p>
+            <input type="password" name="password" class="form-control" placeholder="Password" required>
+        </p>
+    </br>
+    <input type="datetime" name="data_nascimento" id="data_nascimento" placeholder="YYYYMMDD">
+    <p>
+        Marque se for artista<input type="checkbox" name="tipoUsuario" value="True">
+    </p>
+    <p>
+        Artista: <input type="text" name="nome_artistico" class="nome_artistico" placeholder="Nome Artistico">
+        <input type="text" name="biografia" class="biografia" placeholder="Biografia">
+        <input type="number" name="ano_formacao" id="ano_formacao" placeholder="Ano de Formacao">
+    </p>
+    <p>
+        Ouvinte: <input type="text" name="telefone" id="telefone" placeholder="Telefone">
+        <input type="text" name="primeiro_nome" class="primeiro_nome" placeholder="Primeiro Nome">
+        <input type="text" name="sobrenome" class="sobrenome" placeholder="Sobrenome">
+    </p>
+    <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Criar</button>
+    </br>
+    <p>
+        <a class="lead pull-right" href="/">Voltar</a>
+    </p>
+    </form>
+</div>
+</html>
