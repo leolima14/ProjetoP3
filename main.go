@@ -6,12 +6,10 @@ import (
 	"net/http"
 	"strconv"
 	"database/sql"
-    "log"
-	//"time"
-	//"os"
+    	"log"
+	"os"
 	"context"
 	"github.com/lib/pq"
-	_ "github.com/lib/pq"
 )
 
 type Page struct{
@@ -503,13 +501,6 @@ func Adiciona(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-
-	/*connString := `user=postgres 
-	password=postgres
-	host=localhost
-	port=5432
-	dbname=mydb 
-	sslmode=disable`*/
 	connString := `user=postgres 
 	password=postgres
 	host=database-1.cfpvlnhbiv7w.us-east-1.rds.amazonaws.com
@@ -517,19 +508,14 @@ func main() {
 	dbname=projeto 
 	sslmode=disable`
 	db, _ = sql.Open("postgres", connString)
-	/*
-	if err != nil {
-		log.Print("Erro")
-		panic(err)
-	}
-	*/
+
 	err := db.Ping()
 	if err != nil {
 		log.Print("Erro db")
 		panic(err)
 	}
 	
-	//port:= os.Getenv("PORT")
+	port:= os.Getenv("PORT")
 	http.HandleFunc("/", User)
 	http.HandleFunc("/signup", CreateUser)
 	http.HandleFunc("/home", Handler)
@@ -538,6 +524,5 @@ func main() {
 	http.HandleFunc("/home/ouvintes", ListaOuvinte)
 	http.HandleFunc("/home/adiciona", Adiciona)
 	http.HandleFunc("/home/playlist", GetPlaylist)
-    //log.Print("Listening on :"+port)
-    log.Fatal(http.ListenAndServe(":8080", nil))
+    	log.Fatal(http.ListenAndServe(":" + port, nil))
 }
