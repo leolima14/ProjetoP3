@@ -506,7 +506,7 @@ func main() {
 	host=ec2-52-4-171-132.compute-1.amazonaws.com
 	port=5432
 	dbname=dd4vnp4rmq3b8m 
-	sslmode=disable`
+	sslmode=require`
 	db, _ = sql.Open("postgres", connString)
 
 	err := db.Ping()
