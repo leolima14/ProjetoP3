@@ -501,11 +501,11 @@ func Adiciona(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	connString := `user=postgres 
-	password=postgres
-	host=database-1.cfpvlnhbiv7w.us-east-1.rds.amazonaws.com
+	connString := `user=hpyfzpygmsohnm 
+	password=b7e93b95a5b4ed4897072f02be5efe46d3a2d07dcf810a90e17cceaed261e01d
+	host=ec2-52-4-171-132.compute-1.amazonaws.com
 	port=5432
-	dbname=projeto 
+	dbname=dd4vnp4rmq3b8m 
 	sslmode=disable`
 	db, _ = sql.Open("postgres", connString)
 
